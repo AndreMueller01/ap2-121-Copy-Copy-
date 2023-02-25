@@ -1,0 +1,229 @@
+\documentclass[parskip, 12pt, DIV=16, openany]{scrartcl}
+
+\usepackage{german}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[german]{cleveref}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{afterpage}
+\usepackage{float}
+\usepackage{siunitx}
+%\usepackage[per-mode=fraction, exponent-product=\cdot, output-decimal-marker={,}, uncertainty-mode=separate]{siunitx}
+\usepackage[per-mode=fraction, exponent-product=\cdot, output-decimal-marker={,}]{siunitx}
+
+%\usepackage{txfonts}
+\usepackage{tikz}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
+
+\newcommand{\Z}{\mathbb Z}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\textit\arabic{footnote}}
+
+\input{defs}
+\newcommand{\SIp}[3]{\SI[round-mode=places,round-precision=#1]{\Val{#2}}{#3}}
+\newcommand{\SIu}[3]{\SI[round-mode=uncertainty,round-precision=2]{\Val{#1}\pm\Val{#2}}{#3}}
+
+\begin{document}
+\begin{center}
+
+\vspace{2cm}
+
+\large
+Universität Freiburg \\
+Physiklabor für Anfänger*innen Teil 2\\
+Ferienpraktikum im WS 2022/23
+
+\vspace{2cm}
+\vspace{2cm}
+{\sectfont
+ \Huge Versuch 45\\Strom-Spannungs-Kennlinien\par
+}
+\vspace{2cm}
+
+{\Large
+Müller, André\\
+Kopp, Manuel\\
+Breitner, Joachim\\
+(Gruppe 121)\\
+}
+
+\end{center}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+
+{\large
+Durchführung: 23. Februar 2023\\
+Protokollerstellung: \today\\
+Assistent: Steffen Ludwig
+}
+
+\pagebreak
+\section{Ziel des Versuchs}
+
+Wir messen Strom-Spannungs-Kennlinien für verschiedene zweipolige elektrische Bauteile.
+
+
+\section{Versuchsdurchführung}
+
+% ref tabelle per \cref{tab1}
+Für die Messung der Strom-Spannungs-Kennlinien haben wir uns bei allen Bauteilen für die spannungsrichtige Schaltung entschieden (siehe \cref{fig:schaltungen}). Der Grund dafür ist der geringe Widerstand bei allen Bauteilen ausgenommen der LED bei Spannungen unter \SI{1,8}{\V}. Die Kennlinen haben wir bei allen Bauteilen für positive und negative Spannungen gemessen. Zur Messung von Strom und Spannung verwendeten wir die Digitalmultimeter Uni-T UT51 und Pierron UT51, die laut Versuchsbeschreibung baugleich sind.
+
+Im ersten Versuchsteil haben den Strom $I$ für verschiedene Spannungen $U$ an einem technischen Widerstand gemessen. Den Messbereich der Multimeter haben wir für Spannung auf \SI{2}{\V} und für Strom auf \SI{20}{\mA} eingestellt, da wir nur bei geringer Spannung messen wollten, um ein Erwärmen des Widerstands bei höherer Leistung zu vermeiden. 
+
+Der zweite Versuchsteil unterscheidet sich vom ersten dadurch, dass wir statt eines Widerstands, eine Glühlampe in den Schaltkreis eingesetzt haben. Den Messbereich haben wir auf \SI{20}{\V} und \SI{200}{\mA} eingestellt, da wir in diesem Messbereich dem ganzen Spannungsbereich des Netzgeräts verwenden können.
+
+Im dritten Versuchsteil haben wir die Kennline einer LED vermessen. Um den Stromfluss durch die LED zu begrenzen, haben wir einen Widerstand der Größe \SI{216(2)}{\ohm} (gemessen mit Uni-T UT51) vor die LED geschaltet. Die Spannung haben wir direkt an der LED gemessen, um Fehler durch einen nicht konstanten Widerstand auszuschließen und den Stromfluss durch das Voltmeter zu verringern. Den Messbereich haben wir hier mehrfach geändert, da der Strom mit zunehmender Spannung expotentiell anwächst. Hier haben wir für alle Messungen den kleinstmöglichen Messbereich verwendet. Bei der Messung des Stroms für negative Spannungen haben wir immer \SI{0}{\A} erhalten.
+
+Im vierten Versuchteil haben wir ein unbekanntes Bauteil erhalten. Hier haben wir sowohl die Kennlinie gemessen, als auch das Bauteil auf weitere Eigenschaften untersucht. Auch hier haben wir uns immer für den kleinstmöglichen Messbereich entschieden. Die Messwerte und die daraus errechneten Widerstände $R$ zu den verschiedenen Bauteilen sind in \cref{tab1},\cref{tab2},\cref{tab3} und \cref{tab4} aufgelistet.
+\begin{figure}
+\centering
+\includegraphics[page=2,trim=6cm 5.5cm 6cm 19.5cm,clip]{Versuch 45.pdf}
+\caption{verwendeter Schaltungsaufbau (Schaubild aus der Versuchsbeschreibung)}\label{fig:schaltungen}
+\end{figure}
+
+
+\begin{table}
+\begin{center}
+\input{table1.tex}
+\end{center}
+\caption{technischer Widerstand}
+\label{tab1}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\input{table2.tex}
+\end{center}
+\caption{Glühlampe}
+\label{tab2}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\input{table3.tex}
+\end{center}
+\caption{LED}
+\label{tab3}
+\end{table}
+ 
+
+\begin{table}
+\begin{center}
+\input{table4.tex}
+\end{center}
+\caption{unbekanntes Bauteil}
+\label{tab4}
+\end{table}
+
+\section{Auswertung}
+
+
+\subsection{Fehleranalyse und -beiträge}
+
+Die Fehler bei den Messungen ergeben sich aus den Unsicherheiten der Digitalmultimeter.
+Mit der Gauß'schen Fehlerfortpflanzung erhält man die Unsicherheit für $R$. Des weiteren erhalten wir durch die gewählte Schaltung einen Fehler bei der Messung des Stroms. Das Amperemeter misst den Gesamtstrom $I_{\rm{ges}}$ durch das Bauteil und das Voltmeter (Innenwiderstand \SI{10}{M\ohm}), was aufgrund der Gleichung
+
+\[
+I_{\rm{ges}}= I_1\bigg(1+\frac{R_1}{R_2}\bigg)
+\]
+
+dafür sorgt, dass $I_1$ insbesondere bei Bauteilen mit größerem Widerstand signifikant von $I_{\rm{ges}}$ abweicht.
+Dies ist bei uns vor allem für niedrigen Spannungen an der LED relevant, da der Widerstand hier verhältnismäßig groß wird.
+Die prozentuale Abweichung von $I_1$ erhält man leicht durch das Verhältnis der Widerstände von Bauteil und Voltmeter.
+\[
+\frac{I_{\rm{ges}}-I_1}{I_1}= \frac{R_1}{R_2}
+\]
+
+\subsection{Strom-Spannungs-Kennlinien}
+
+Wir plotten die gemessenen Ströme über die verschieden Spannungen. Bei dem technischen Widerstand erwarten wir einen linearen Zusammenhang von $I$ und $U$. Dies überprüfen wir mittels linearer Regression. Um zu überprüfen ob die Regressionsgerade mit unseren Messdaten übereinstimmt plotten wir zudem noch die $I$-Residuen (siehe \cref{fig1}). Aus dem Residuendiagramm ist deutlich zu erkennen, dass die Messungen mit unserer erwarteten Abhängigkeit übereinstimmen.
+Für die Glühlampe überprüfen wir die Zusammenhänge $I = aU + bU^3$ und $I = aU + b arctan(U)$ (siehe \cref{fig2}). Hier scheint die arctan-Funktion auf den ersten Blick sehr gut zur Kennline zu passen. Im Residuendiagramm sieht man dann aber insbesondere für kleine Spannungen deutlich, dass die Messwerte außerhalb des $\SI{68}{\percent}$ Konfidenzbands liegen. Für die $x^3$-Funktion liegen die Werte für große Spannungen sehr gut innerhalb des Konfidenzbands, weichen für kleine Spannungen aber ähnlich stark ab.
+Die Kennlinie der LED (siehe \cref{fig3}) ähnelt stark einer Exponentialfunktion.
+Bei dem unbekannten Bauteil haben wir eine Kennlinie erhalten, die bei geringer Spannung noch sehr linear verläuft und gegen oben hin stark abflacht (siehe \cref{fig4}).
+
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plot1}%
+\vspace*{-1.28cm}\\ % ugly hack
+\includegraphics[width=\linewidth]{plot1residuen}
+\caption{Kennlinie des technischen Widerstands (oben) Residuendiagramm (unten)}\label{fig1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plot2}%
+\vspace*{-1.28cm}\\ % ugly hack
+\includegraphics[width=\linewidth]{plot2residuen1}
+\vspace*{-1.38cm}\\ % ugly hack
+\includegraphics[width=\linewidth]{plot2residuen2}
+\caption{Kennlinie der Glühlampe Residuendiagramm (unten)}\label{fig2}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plot3}%
+\caption{Kennlinie der LED}\label{fig3}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\linewidth]{plot4}%
+
+\caption{Kennlinie des unbekannten Bauteils}\label{fig4}
+\end{figure}
+
+\subsection{Widerstand der Glühlampe}
+
+Bei \SI{0,47(12)}{\V} haben wir einen Widerstand von \SI{28,66(97)}{\ohm} erhalten. Mit kleineren Spannungen hätten wir sicherlich auch noch kleinere Widerstände erhalten. Die Regressionsgeraden ergeben hier keine sinnvollen Ergebnisse für den kleinsten Widerstand, da sie in diesem Bereich zu sehr von den tatsächlichen Messwerten abweichen.
+Der höchste durch Messung bestimmte Widerstand beträgt \SI{106,7(18)}{\ohm}. Hier kann nur die arctan-Regressionsgerade sinnvolle Aussagen über den Widerstand bei noch größerer Helligkeit liefern. Bei maximaler Helligkeit wären das \SI{163.170(2)}{\ohm}.
+
+\subsection{LED ohne Vorwiderstand}
+
+Wir wollen berechnen, welcher Strom durch die LED geflossen wäre, wenn wir keinen Vorwiderstand verwendet hätten. Da wir leider nicht bedacht haben, die Gesamtspannung zu messen, werden wir diese aus dem Strom $I$ und dem angegebenen Vorwiderstand $R_{\rm{V}}$ berechnen. Der Strom durch die LED ohne Vorwiderstand berechnet sich dann folgendermaßen:
+\[
+I_{\rm{LED}} = \frac{U_{\rm{LED}}+I \cdot R_{\rm{V}}}{R_{\rm{LED}}}
+\]
+Wir erhalten ohne Widerstand eine deutlich steiler ansteigende Kennlinie (siehe \cref{fig5}).
+\begin{figure}
+\includegraphics[width=\linewidth]{plot5}%
+
+\caption{Kennlinie der LED ohne Vorwiderstand}\label{fig5}
+\end{figure}
+\subsection{Literaturvergleich}
+
+Wir wollen den von uns gemessenen Widerstand mit dem Nominalwert $R_{\text{lit}} = \SIu{R1_lit}{dR1_lit}{\ohm}$ vergleichen.
+Es bietet sich an das Inverse der Steigung der Regressionsgeraden $R = \SIu{R1}{dR1}{\ohm}$ dafür zu verwenden, da wir so eine gute Mittelung der Messwerte erhalten. Mit $t = \SIp{1}{t}$ stellen wir eine gute Verträglichkeit mit dem Literaturwert fest.
+
+\section{Diskussion}
+
+
+
+\subsection{unbekanntes Bauteil}
+
+Beim Messen der Strom-Spannungs-Kennlinie des unbekannten Bauteils fiel uns besonders der lineare Verlauf der Kennlinie bei geringen Spannungen und die zeitliche Änderung der Spannung auf. Der Widerstand nahm mit der Zeit zu. Eine mögliche Erklärung wäre, dass das Bauteil ein PTC-Widerstand ist, der sich mit der Zeit aufgrund der eigenen Leistung erwärmt. Das würde erklären, wieso der Widerstand wieder abnahm, wenn man das Netzgerät ausschaltete. Ausschließen konnten wir den technischen Widerstand, da sich dieser zeitlich nicht so stark ändert. Die Diode konnten wir auch ausschließen, da der Widerstand in beide Richtungen gleich war,den Transistor, weil das Bauteil zweipolig war. Spule und den Kondensator konnten es auch nicht sein, weil keine Ladung gespeichert wurde, der Strom nicht wie es für einen Kondensator typisch wäre, bis auf 0A abgenommen hat und die Spannung gestiegen ist, anstatt wie bei einer Spule zu sinken.
+
+\subsection{Verbesserung der Messung}
+
+Die mit Abstand größten Messungenauigkeiten haben wir, wie bereits erwähnt, bei der LED, aufgrund einer schlechten Wahl der Schaltung, erhalten. Hier wäre es möglich gewesen, die Messgenauigkeit bei geringen Spannungen und Strömen mit der stromrichtigen Schaltung zu verbessern.
+Bei der Glühlampe wäre es für die Bestimmung des Widerstands bei kleinen Spannungen hilfreich gewesen, wenn wir in diesem Bereich mehr Messergebnisse aufgenommen hätten.
+Bei unserem unbekannten Bauteil hatten wir Spannungen, die sich zeitlich geändert haben. Es wäre noch interessant gewesen die Messergebnisse kurz nach dem Einschalten aufzunehmen, um zu schauen, ob wir dann auch für größere Spannung eine Gerade erhalten hätten.
+\appendix
+
+
+\includepdf[pages=1,scale=0.75,pagecommand={\section{Versuchsnotizen}}]{labnotes2.pdf}
+\includepdf[pages=2-,scale=1,pagecommand={},linktodoc=true]{labnotes2.pdf}
+
+
+\includepdf[pages=1,scale=1,pagecommand={\section{Jupyter-Quellen}}]{Notebook.pdf}
+\includepdf[pages=2-,scale=1,pagecommand={},linktodoc=true]{Notebook.pdf}
+
+\end{document}

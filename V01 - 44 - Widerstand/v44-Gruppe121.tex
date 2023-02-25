@@ -1,0 +1,201 @@
+\documentclass[parskip, 12pt, DIV=16, openany]{scrartcl}
+
+\usepackage{german}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[german]{cleveref}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{afterpage}
+\usepackage{float}
+%\usepackage[per-mode=fraction, exponent-product=\cdot, output-decimal-marker={,}, uncertainty-mode=separate]{siunitx}
+\usepackage[per-mode=fraction, exponent-product=\cdot, output-decimal-marker={,}]{siunitx}
+
+%\usepackage{txfonts}
+\usepackage{tikz}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
+
+\newcommand{\Z}{\mathbb Z}
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\textit\arabic{footnote}}
+
+\input{defs}
+\newcommand{\SIp}[3]{\SI[round-mode=places,round-precision=#1]{\Val{#2}}{#3}}
+\newcommand{\SIu}[3]{\SI[round-mode=uncertainty,round-precision=2]{\Val{#1}\pm\Val{#2}}{#3}}
+
+
+%\title{Versuch 45
+
+\begin{document}
+\begin{center}
+
+\vspace{2cm}
+
+\large
+Universität Freiburg \\
+Physiklabor für Anfänger*innen Teil 2\\
+Ferienpraktikum im WS 2022/23
+
+\vspace{2cm}
+\vspace{2cm}
+{\sectfont
+ \Huge Versuch 45\\Strom-Spannungs-Kennlinien\par
+}
+\vspace{2cm}
+
+{\Large
+Müller, André\\
+Kopp, Manuel\\
+Breitner, Joachim\\
+(Gruppe 121)\\
+}
+
+\end{center}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+\vspace{2cm}
+
+{\large
+Durchführung: 23. Februar 2023\\
+Protokollerstellung: \today\\
+Assistent: Tim Gitzinger
+}
+
+\pagebreak
+\section{Ziel des Versuchs}
+
+Wir messen Strom-Spannungs-Kennlinien für verschiedene zweipolige elektrische Bauteile.
+
+\section{Versuchsdurchführung}
+
+Wir untersuchen einen Tantal-Draht. Mittels einer Messschraube ermittelten wir dessen Durchmesser von $d = \SIu{d}{dd}{\mm}$.
+
+Wir ermitteln den spezifischen Widerstand des Drahtes, in dem wir durch den Draht einen Strom der Stärke $I$ fließen lassen, und dabei auf einem Abschnitt der Länge $l$ die Spannungsdifferenz $U$ messen.
+
+\begin{figure}
+\centering
+\includegraphics[page=1,trim=3cm 4cm 3cm 21cm,clip]{Versuch 44.pdf}
+\caption{Schaltungsaufbau (aus der Versuchsbeschreibung)}\label{fig:schaltungen}
+\end{figure}
+
+Im ersten Versuchsteil verwendeten wir dazu verschiedene Schaltungen (siehe \cref{fig:schaltungen}). Bei den Schaltungen 1, 3 und 5 wurde ein digitales Multimeter (Uni-T 51) zur Spannungsmessung verwendet und ein analoges (PeakTech 3260) zur Stromstärkemessung, bei den Schaltungen 2, 4 und 6 wurden das jeweils andere Gerät verwendet. Die Länge des Drahts wurde mit einem Metermaß bestimmt. Das Labornetzteil haben wir so eingestellt, dass die Leistungsaufnahme des Drahtes im Bereich von \SI{1}{\W} liegt.
+
+Die Messergebnisse der sechs Schaltungen sind in \cref{tab1} aufgeführt. Die Ungenauigkeiten haben auf Basis der Datenblätter in der Versuchsbeschreibung berechnet.
+
+Bei den ersten Messungen ist uns der Draht mehrfach verrutscht, daher die Streichung in den Versuchsnotizen.
+
+\begin{table}
+\begin{center}
+\input{table1.tex}
+\end{center}
+\caption{Verschiedene Schaltungen}
+\label{tab1}
+\end{table}
+
+Für den zweiten Versuchsteil, in dem wir die Länge des vermessenen Drahtstücks variieren sollen, wählten wir Schaltung 5 aus, aus folgenden Gründen
+\begin{itemize}
+\item Schaltung 1  und 2 disqualifizieren sich dadurch, dass die Spannungsmessung auch den Amperemeter, und damit dessen Widerstand, erfasst.
+\item Schaltung 5 und 6 bieten sich dadurch an, dass die Spannungsmessung direkt mit eigenen Krokodilklemmen direkt am Draht erfolgt,
+\item Bei Schaltung 5 wird das digitale Multimeter zur Spannungsmessung verwendet. Da wir erwarten, dass die Spannung mit der Drahtlänge kleiner wird, die Stromstärke aber gleich bleibt, bietet sich an, hier das genauere Gerät zu nehmen.
+\end{itemize}
+
+\begin{table}
+\begin{center}
+\input{table2.tex}
+\end{center}
+\caption{Schaltung 2, verschiedene Längen, $I = \SIu{I}{dI}{\A}$}
+\label{tab2}
+\end{table}
+
+Wir wählten daher Schaltung 5. Wir stellten das Netzteil so ein, dass (laut analogem Multimeter) stets $I = \SI1{\A}$ Strom floss. Dies erforderte zum Teil nachjustieren.
+Wir machten 12 Messungen, deren Werte in \cref{tab2} aufgeführt sind.
+
+
+\section{Auswertung}
+
+\subsection{Fehleranalyse und -beiträge}
+
+Aus $d$, $l$, $I$ und $U$ können wir per
+\[
+\varrho = \frac{U \pi (\frac d2)^2}{I l}
+\]
+den spezifischen Widerstand berechnen. Siehe \cref{tab1} und \cref{tab2} für Ergebnisse der jeweiligen Messungen. Die Unsicherheit wurde dabei über die Gauß'sche Fehlerfortpflanzung berechnet.
+
+Wie oben besprochen erschien uns Schaltung 5 von den Schaltungen im ersten Versuchsteil die sinnvollste; für diese berechnen wir die jeweiligen Beiträge der Unsicherheiten der Messwerte:
+\begin{center}
+\input{table3.tex}
+\end{center}
+
+Wir sehen dass die Unsicherheit des Drahtdurchmessers (der ja quadratisch in den spezifischen Widerstand eingeht) mit Abstand den größten Beitrag liefert.
+
+\subsection{Zusammenhang $l$ und $U$}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plot1}%
+\vspace*{-.9cm}\\
+\includegraphics[width=\linewidth]{plot1residuen}
+\caption{Gemessener Widerstand in Abhängigkeit der vermessenen Drahtlänge}\label{fig:R}
+\end{figure}
+
+
+Weiter untersuchen wir den Zusammenhang zwischen Drahtlänge und gemessener Spannung im zweiten Versuchsteil. Dazu berechnen wir den gemessenen Widerstand $R = \frac{U}{I}$, und plotten ihn in \cref{fig:R} über die Länge.
+
+Wie die eingezeichnete Ausgleichsgerade (per ungewichteter linearer Regression ermittelt) und das zugehörige Residuendiagramm zeigen, sind die Messwerte mit dem erwarteten linearen Zusammenhang zwischen Spannungsdifferenz und Drahtlänge gut verträglich.
+
+\subsection{Literaturvergleich}
+
+Der Literaturwert\footnote{\url{https://en.wikipedia.org/wiki/Tantalum}, 22. Februar 2023} für den spezifischen Widerstand von Tantal bei \SI{20}{\celsius} ist $\varrho_{\text{lit}} = \SIp{3}{rho_lit}{\micro\ohm\meter}$. Dieser ist mit $t = \SIp{2}{t}{}$ mit dem im Versuchsaufbau 5 ermittelten Wert $\varrho = \SIu{rho}{drho}{\micro\ohm\meter}$ gut verträglich.
+
+Eine alternative Bestimmung von $\varrho$ ist, die im zweiten Versuchsteil für jede Messung erhaltenen Werte entsprechend ihrer Unsicherheiten gewichtet zu mitteln. Dies ergibt einen Wert von $\varrho_2 = \SIu{rho2}{drho2}{\micro\ohm\meter}$, was allerdings signifikant ($t = \SIp{2}{t2}{}$) vom Literaturwert abweicht.
+
+\section{Diskussion}
+
+\subsection{Vergleich der Schaltungen}
+
+Von den drei Schaltplänen sind nicht alle gleich gut geeignet, den spezifischen Widerstand des Tantal-Drahtes zu ermitteln:  Bei Schaltung 1 und 2 wird auch der Widerstand des Amperemeters vom Spannungsmesser erfasst, was die deutlich zu großen Werte erklärt.
+
+Aber auch bei Schaltung 3 und 4 misst das Spannungsmessgerät auch noch den Widerstand der Leitung zwischen Draht und der Stelle, an der das Spannungsmessgerät an den Stromkreis angeschlossen wird (in unserem Fall war das eine Krokodilklemme mit Bananenstecker). Diese (dicken) Leitungen haben vermutlich einen geringen Widerstand, aber scheinbar genug um die Diskrepanz in \cref{tab1} hervorzurufen.
+
+Daher ist Schaltung 5 und 6 deutlich sinnvoller. Die Leitung vom Messgerät zum Draht selbst ist dabei kein Problem, da dort kein Strom fließt, sobald sich das Spannungspotential ausgeglichen hat. Somit beeinflusst der Widerstand dieser Kabel unsere Messung nicht.
+
+\subsection{Unterschätzung der Messwerte}
+
+Die große Abweichung der ermittelten Werte für den spezifischen Widerstand vom Literaturwert verlangen nach einer Erklärung. Eine mögliche Erklärung ist, dass wir die Unsicherheiten unserer analogen Spannungs- und Stromstärkemessungen unterschätzen: Hier haben wir oben lediglich die im Datenblatt angegebene Unsicherheit von 2\% verwendet. Eventuell ist dies aber nicht groß genug um auch die Unsicherheit beim Ablesen der analogen Anzeige selbst abzudecken.
+
+\subsection{Verbesserung der Messung}
+
+Aufgrund des großen Einflusses der Drahtdurchmessermessung auf das Ergebnis ist hier zuerst anzusetzen, und hier eine genauere Messung zu versuchen – eventuell mittels dem von uns nicht genutzten Mikroskop.
+
+Der nächstgrößte Beitrag zur Ungenauigkeit stammt von der Messung der Drahtlänge. Der Draht war schon leicht verbogen, was eine präzise Messung erschwerte. Hier könnte man den Aufbau verbessern, in dem man den Draht stabil und gut gespannt zwischen zwei (isolierten!) Halterungen einspannt, so dass sich die Position der Krokodilklemmen gut mit einem Maßstab messen lässt. Eine optische Bank mit Maßstab auf der Halterung könnte hier helfen.
+
+Bei der zweiten Versuchsreihe haben wir meist, aber nicht immer, den Stromfluss präzise bei \SI{1}{\A} gehalten. Mehr Sorgfalt hier hätte vielleicht den Ausreißer in \cref{fig:R} vermieden.
+
+Der spezifische Widerstand ist prinzipiell temperaturabhängig, so dass eine Überwachung der Drahttemperatur die Messung verbessern müsste. Auch wenn wir hin und wieder händisch geprüft haben, ob der Draht merklich warm wird, können wir damit keine leichte aber messwertrelevante Erwärmung ausschließen. Bei einem Stromfluss von \SI{1}{\A} ist eine Aufheizung des dünnen Drahtes nicht unplausibel, und könnte die signifikanten Abweichungen beim zweiten Versuchsteil erklären.
+
+Eine Faustregel\footnote{\url{https://de.wikipedia.org/wiki/Elektrische_Leitf\%C3\%A4higkeit\#Temperaturabh\%C3\%A4ngigkeit}, 23. Februar 2023} besagt, dass jedes Kelvin Temperaturerhöhung den Widerstand um \SI{0,5}{\percent} erhöht. Die Veränderung des spezifischen Widerstandes im Verlauf der zweiten Messreihe von etwa \SIp{1}{incr}{\percent} könnte also durch eine Erwärmung von \SIp{0}{incrT}{\kelvin} erklärt werden. Bei einer Leistung von etwa \SIp{2}{power}{\W}, einer Dichte von \SIp{2}{dens}{\g\per\cm\cubed}, einer spezifischen Wärmekapazität von \SIp{0}{wkap}{\J\per\kg\per\K} bräuchte es um die \SIp{2}{mass}{\g} Draht zu erhitzen lediglich \SIp{1}{time}{\s} (wobei wir die Kühlung durch die Luft in dieser Überschlagsrechnung ignorieren) -- es ist also sehr plausibel dass wir zu viel Energie durch den Draht geschickt haben.
+
+\subsection{Korrelation von $U$ und $I$}
+
+Unserer Betreuer wies uns darauf hin, dass die Werte von $U$ und $I$ korreliert sind. Zum einen ist das erwünscht, da der gesuchte Widerstand gerade die Proportionalitätskontante ist. Zum anderen schränkt es die Anwendbarkeit der Gauß'schen Fehlerfortpflanzung ein, die ja von \emph{unabhängigen} normalverteilten Eingangsvariablen ausgeht. In unserem Fall sollte der Effekt allerdings vernachlässigbar sein, vor allem da ja die Ungenauigkeiten der (unabhängigen) Längen- und Durchmessermessungen dominieren.
+
+\appendix
+\section{Versuchsnotizen}\label{sec:labnotes}
+\begin{center}
+\includegraphics[page=1,scale=0.75]{labnotes.pdf}
+\end{center}
+
+\pagestyle{empty}
+
+\includepdf[pages=1,scale=1,pagecommand={\section{Jupyter-Quellen}}]{Notebook.pdf}
+\includepdf[pages=2-,scale=1,pagecommand={},linktodoc=true]{Notebook.pdf}
+
+\end{document}
